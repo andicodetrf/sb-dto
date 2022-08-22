@@ -1,9 +1,11 @@
 package com.andi.springbootdto;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.andi.springbootdto.model.Location;
 import com.andi.springbootdto.model.User;
@@ -12,6 +14,12 @@ import com.andi.springbootdto.repository.UserRepository;
 
 @SpringBootApplication
 public class SpringbootDtoApplication implements CommandLineRunner {
+	
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootDtoApplication.class, args);
@@ -28,7 +36,7 @@ public class SpringbootDtoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		Location location = new Location();
-		location.setPlace("Pune");
+		location.setPlace("SG");
 		location.setDescription("Great place to live");
 		location.setLongitude(40.5);
 		location.setLatitude(30.6);
