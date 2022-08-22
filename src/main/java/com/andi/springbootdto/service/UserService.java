@@ -35,7 +35,6 @@ public class UserService {
 	}
 	
 		
-	
 	//manual mapping from entity to dto
 //	private UserLocationDTO convertEntityToDTO(User user) {
 //		UserLocationDTO userLocationDTO = new UserLocationDTO();
@@ -65,9 +64,18 @@ public class UserService {
 		//[{"userId":1,"email":"p123@gmail.com","place":null,"longitude":0.0,"latitude":0.0},
 		//{"userId":2,"email":"t123@gmail.com","place":null,"longitude":0.0,"latitude":0.0}]
 		
-		
 		//result with modelmapper config
 		//[{"userId":1,"email":"p123@gmail.com","place":"SG","longitude":40.5,"latitude":30.6},
 		 //{"userId":2,"email":"t123@gmail.com","place":"SG","longitude":40.5,"latitude":30.6}]
+	}
+	
+	
+	
+	//example of conversion from DTO to Entity
+	private User convertDTOToEntity(UserLocationDTO userLocationDTO) {
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		User user = new User();
+		user = modelMapper.map(userLocationDTO, User.class);
+		return user;
 	}
 }
